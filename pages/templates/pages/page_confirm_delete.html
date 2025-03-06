@@ -7,11 +7,11 @@
 <section class="py-5">
   <div class="container">
     <h2>Eliminar Página</h2>
-    <div class="alert alert-warning"></div>
+    <div class="alert alert-warning">
       <p>¿Estás seguro de que deseas eliminar la página "<strong>{{ page.title }}</strong>"?</p>
       <p>Esta acción no se puede deshacer.</p>
     </div>
-    <form method="post">
+    <form method="page">
       {% csrf_token %}
       <button type="submit" class="btn btn-danger">Sí, eliminar</button>
       <a href="{% url 'pages:page_detail' page.pk %}" class="btn btn-secondary">Cancelar</a>

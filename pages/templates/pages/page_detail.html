@@ -5,7 +5,7 @@
 <section class="py-5">
     <div class="container">
         <h2>{{ page.title }}</h2>
-        {% if post.subtitle %}
+        {% if page.subtitle %}
             <h4>{{ page.subtitle }}</h4>
         {% endif %}
         <p><strong>Creado el:</strong> {{ page.created_at|date:"d/m/Y" }}</p>
@@ -17,7 +17,7 @@
         </div>
         <div class="mt-4">
             <a href="{% url 'pages:page_list' %}" class="btn btn-secondary">Volver al Listado</a>
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and post.author == user %}
             <a href="{% url 'pages:page_update' page.pk %}" class="btn btn-warning">Editar Página</a>
             <a href="{% url 'pages:page_delete' page.pk %}" class="btn btn-danger">Eliminar Página</a>
             {% endif %}
@@ -26,7 +26,7 @@
             <h3>Comentarios y Opiniones</h3>
             {% comment %}
                 Si tienes un modelo de comentarios relacionado con Page, puedes iterar sobre él, por ejemplo:
-                {% for comment in post.comments.all %}
+                {% for comment in page.comments.all %}
                 ...
                 {% empty %}
                 <p>No hay comentarios aún. Sé el primero en opinar.</p>

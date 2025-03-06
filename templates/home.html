@@ -1,43 +1,79 @@
-<!-- templates/home.html -->
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Inicio - Sostenibilidad Blog{% endblock %}
 
-
 {% block content %}
+<!-- Sección de Últimas Publicaciones del Blog -->
 <section class="mb-5">
   <div class="container">
-    <h2 class="mb-4 text-center">Últimas Publicaciones</h2>
+    <h2 class="mb-4 text-center">Últimas Publicaciones de Blog</h2>
     <div class="row">
-      {% for page in pages %}
+      {% for post in latest_posts %}
       <div class="col-md-4 mb-4">
         <div class="card h-100">
-          {% if page.image %}
-            <img src="{{ page.image.url }}" class="card-img-top" alt="{{ page.title }}">
+          {% if post.image %}
+          <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
           {% else %}
-            <img src="{% static 'images/default_page.jpg' %}" class="card-img-top" alt="Imagen por defecto">
+          <img src="{% static 'images/default_post.jpg' %}" class="card-img-top" alt="Imagen por defecto">
           {% endif %}
           <div class="card-body">
-            <h4 class="card-title">{{ page.title }}</h4>
-            <h6 class="card-subtitle mb-2 text-muted">{{ page.subtitle }}</h6>
-            <p class="card-text">{{ page.content|safe|truncatewords:25 }}</p>
-            <a href="{% url 'pages:page_detail' page.pk %}" class="btn btn-primary">Leer más</a>
+            <h4 class="card-title">{{ post.title }}</h4>
+            <p class="card-text">{{ post.content|safe|truncatewords:25 }}</p>
+            <a href="{% url 'blog:post_detail' post.pk %}" class="btn btn-primary">Leer más</a>
           </div>
           <div class="card-footer text-muted">
-            Publicado el {{ page.created_at|date:"d/m/Y" }}
+            <small>Publicado el {{ post.created_at|date:"d/m/Y" }}</small>
           </div>
         </div>
       </div>
       {% empty %}
       <div class="col-12">
         <div class="alert alert-info text-center">
-          No hay publicaciones recientes.
+          No hay publicaciones recientes en el blog.
         </div>
       </div>
       {% endfor %}
     </div>
+    <div class="text-center">
+      <a href="{% url 'blog:post_list' %}" class="btn btn-outline-primary">Ver todas las publicaciones</a>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Últimas Páginas -->
+<section class="mb-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Últimas Páginas</h2>
+    <div class="row">
+      {% for page in latest_pages %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          {% if page.image %}
+          <img src="{{ page.image.url }}" class="card-img-top" alt="{{ page.title }}">
+          {% else %}
+          <img src="{% static 'images/default_page.jpg' %}" class="card-img-top" alt="Imagen por defecto">
+          {% endif %}
+          <div class="card-body">
+            <h4 class="card-title">{{ page.title }}</h4>
+            <p class="card-text">{{ page.subtitle|default:"Sin subtítulo" }}</p>
+            <a href="{% url 'pages:page_detail' page.pk %}" class="btn btn-primary">Leer más</a>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Creado el {{ page.created_at|date:"d/m/Y" }}</small>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12">
+        <div class="alert alert-info text-center">
+          No hay páginas recientes.
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      <a href="{% url 'pages:page_list' %}" class="btn btn-outline-primary">Ver todas las páginas</a>
+    </div>
   </div>
 </section>
 {% endblock %}
-

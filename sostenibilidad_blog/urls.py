@@ -11,7 +11,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
-from blog.views import HomeView
+from sostenibilidad_blog.views import home
 
 urlpatterns = [
     # Ruta para el panel de administración de Django
@@ -32,10 +32,7 @@ urlpatterns = [
     # Rutas de la app 'about'
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
 
-    path('', HomeView.as_view(template_name='home.html'), name='home'),
-    
-    # Ruta para home (si se define en una vista global)
-    # path('', HomeView.as_view(), name='home'),
+    path('', home, name='home'),
 ]
 
 # En modo desarrollo, servir archivos de medios
