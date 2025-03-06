@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Actualizar Perfil - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>Actualizar Perfil</h2>
+        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.avatar.label_tag }}
+                {{ form.avatar }}
+                <div class="invalid-feedback">Seleccione un avatar válido.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.bio.label_tag }}
+                {{ form.bio }}
+                <div class="invalid-feedback">Ingrese una biografía.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.birthdate.label_tag }}
+                {{ form.birthdate }}
+                <div class="invalid-feedback">Ingrese una fecha válida.</div>
+            </div>
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+            <a href="{% url 'accounts:profile' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</section>
+{% endblock %}

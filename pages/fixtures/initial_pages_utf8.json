@@ -1,0 +1,113 @@
+[
+    {
+      "model": "pages.page",
+      "pk": 1,
+      "fields": {
+        "title": "Introducción a la Sostenibilidad",
+        "subtitle": "Conceptos básicos",
+        "content": "<p>La sostenibilidad busca satisfacer las necesidades actuales sin comprometer la capacidad de futuras generaciones para cubrir sus propias necesidades.</p>",
+        "image": "pages_images/sostenibilidad1.jpg",
+        "created_at": "2025-01-10"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 2,
+      "fields": {
+        "title": "Energías Renovables",
+        "subtitle": "Panorama actual",
+        "content": "<p>Las energías renovables, como la solar o la eólica, son claves en la lucha contra el cambio climático.</p>",
+        "image": "pages_images/energias.jpg",
+        "created_at": "2025-01-12"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 3,
+      "fields": {
+        "title": "La Economía Circular",
+        "subtitle": "Cerrar el ciclo de materiales",
+        "content": "<p>La economía circular reduce el uso de recursos y promueve el reciclaje y la reutilización de productos.</p>",
+        "image": "pages_images/economia_circular.jpg",
+        "created_at": "2025-01-15"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 4,
+      "fields": {
+        "title": "Reciclaje y Gestión de Residuos",
+        "subtitle": null,
+        "content": "<p>Un manejo responsable de residuos es esencial. Separar vidrio, plásticos, orgánicos y papel reduce el impacto ambiental.</p>",
+        "image": "pages_images/reciclaje.jpg",
+        "created_at": "2025-01-20"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 5,
+      "fields": {
+        "title": "Huella de Carbono",
+        "subtitle": "Medición e impacto",
+        "content": "<p>Conocer nuestra huella de carbono nos ayuda a establecer metas para reducirla, ya sea cambiando hábitos de transporte o alimentación.</p>",
+        "image": "pages_images/huella_carbono.jpg",
+        "created_at": "2025-02-01"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 6,
+      "fields": {
+        "title": "Agroecología",
+        "subtitle": "Agricultura sostenible",
+        "content": "<p>La agroecología integra conocimiento local, conservación del suelo y biodiversidad para producir alimentos de forma responsable.</p>",
+        "image": "pages_images/agroecologia.jpg",
+        "created_at": "2025-02-05"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 7,
+      "fields": {
+        "title": "Moda Sostenible",
+        "subtitle": null,
+        "content": "<p>La industria textil es una de las más contaminantes. Optar por ropa de calidad y producción ética reduce residuos y abuso laboral.</p>",
+        "image": "pages_images/moda_sostenible.jpg",
+        "created_at": "2025-02-10"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 8,
+      "fields": {
+        "title": "Turismo Responsable",
+        "subtitle": "Minimizando el impacto",
+        "content": "<p>El turismo responsable promueve el respeto a la cultura local, el uso racional de recursos y la protección del entorno natural.</p>",
+        "image": "pages_images/turismo_responsable.jpg",
+        "created_at": "2025-02-15"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 9,
+      "fields": {
+        "title": "Ciudades Inteligentes",
+        "subtitle": "Movilidad y tecnología",
+        "content": "<p>Las ciudades inteligentes apuestan por sistemas de transporte limpios y eficientes, gestión de energía y espacios verdes.</p>",
+        "image": "pages_images/ciudades_inteligentes.jpg",
+        "created_at": "2025-02-20"
+      }
+    },
+    {
+      "model": "pages.page",
+      "pk": 10,
+      "fields": {
+        "title": "Estilos de Vida Ecológicos",
+        "subtitle": "Pequeñas acciones, gran impacto",
+        "content": "<p>Cada persona puede aportar con acciones simples: reducir el plástico, consumir productos locales y usar energía limpia.</p>",
+        "image": "pages_images/estilos_vida.jpg",
+        "created_at": "2025-02-25"
+      }
+    }
+  ]
+  

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detalle del Mensaje - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>Detalle del Mensaje</h2>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ message.subject }}</h4>
+                <p class="card-text"><strong>De:</strong> {{ message.from_user.username }}</p>
+                <p class="card-text"><strong>Para:</strong> {{ message.to_user.username }}</p>
+                <p class="card-text"><strong>Fecha:</strong> {{ message.created_at|date:"d/m/Y H:i" }}</p>
+                <hr>
+                <p class="card-text">{{ message.body }}</p>
+            </div>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'messaging:inbox' %}" class="btn btn-secondary">Volver a la Bandeja</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

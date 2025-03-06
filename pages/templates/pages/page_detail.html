@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ page.title }} - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>{{ page.title }}</h2>
+        {% if page.subtitle %}
+            <h4>{{ page.subtitle }}</h4>
+        {% endif %}
+        <p><strong>Creado el:</strong> {{ page.created_at|date:"d/m/Y" }}</p>
+        {% if page.image %}
+            <img src="{{ page.image.url }}" alt="{{ page.title }}" class="img-fluid mb-4">
+        {% endif %}
+        <div class="content">
+            {{ page.content|safe }}
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'pages:page_list' %}" class="btn btn-secondary">Volver al Listado</a>
+            {% if user.is_authenticated and post.author == user %}
+            <a href="{% url 'pages:page_update' page.pk %}" class="btn btn-warning">Editar Página</a>
+            <a href="{% url 'pages:page_delete' page.pk %}" class="btn btn-danger">Eliminar Página</a>
+            {% endif %}
+        </div>
+        <div class="mt-5">
+            <h3>Comentarios y Opiniones</h3>
+            {% comment %}
+                Si tienes un modelo de comentarios relacionado con Page, puedes iterar sobre él, por ejemplo:
+                {% for comment in page.comments.all %}
+                ...
+                {% empty %}
+                <p>No hay comentarios aún. Sé el primero en opinar.</p>
+                {% endfor %}
+            {% endcomment %}
+            {# Ejemplo de comentarios ficticios similar a page_detail: #}
+            {% for i in "1234567890"|make_list %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Usuario {{ forloop.counter }}</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.</p>
+                </div>
+            </div>
+            {% endfor %}
+            <p>Gracias por leer. Esperamos tus comentarios y sugerencias.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

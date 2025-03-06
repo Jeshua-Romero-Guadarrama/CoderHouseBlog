@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Registro de Usuario - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>Registrarse</h2>
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                <div class="invalid-feedback">Ingrese un nombre de usuario válido.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                <div class="invalid-feedback">Ingrese un correo electrónico válido.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                <div class="invalid-feedback">Ingrese una contraseña segura.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                <div class="invalid-feedback">Confirme su contraseña.</div>
+            </div>
+            <button type="submit" class="btn btn-success">Registrarse</button>
+            <a href="{% url 'accounts:login' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</section>
+{% endblock %}

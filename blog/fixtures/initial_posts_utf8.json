@@ -1,0 +1,113 @@
+[
+    {
+      "model": "blog.post",
+      "pk": 1,
+      "fields": {
+        "title": "Bienvenida al Blog",
+        "content": "<p>Gracias por visitar nuestro espacio de sostenibilidad. Aquí compartiremos ideas y proyectos eco-friendly.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T09:00:00Z",
+        "image": "posts_images/bienvenida.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 2,
+      "fields": {
+        "title": "Paneles Solares en Casa",
+        "content": "<p>Instalar paneles solares es más fácil de lo que crees. Conoce los requisitos y beneficios.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T10:30:00Z",
+        "image": "posts_images/paneles_solares.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 3,
+      "fields": {
+        "title": "Cocina Vegana para Principiantes",
+        "content": "<p>Te explicamos cómo iniciarte en una dieta vegetal, reduciendo tu huella de carbono y mejorando tu salud.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T12:00:00Z",
+        "image": "posts_images/cocina_vegana.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 4,
+      "fields": {
+        "title": "Cómo Reducir Plásticos de un Solo Uso",
+        "content": "<p>Descubre alternativas a botellas y bolsas desechables, y ayuda a frenar la contaminación de nuestros océanos.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T13:45:00Z",
+        "image": "posts_images/reducir_plasticos.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 5,
+      "fields": {
+        "title": "Pequeños Jardines Urbanos",
+        "content": "<p>Conoce las técnicas para cultivar en macetas, azoteas o balcones. Planta tus propias hortalizas sin importar el espacio.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T15:00:00Z",
+        "image": "posts_images/jardin_urbano.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 6,
+      "fields": {
+        "title": "Guía Básica de Compostaje",
+        "content": "<p>Convierte tus desechos orgánicos en abono natural. Un proceso sencillo que contribuye a la fertilidad del suelo.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T16:30:00Z",
+        "image": "posts_images/compostaje.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 7,
+      "fields": {
+        "title": "Productos de Limpieza Ecológicos",
+        "content": "<p>Evita químicos dañinos y aprende a fabricar limpiadores caseros con ingredientes naturales.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T17:45:00Z",
+        "image": "posts_images/limpieza_ecologica.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 8,
+      "fields": {
+        "title": "Ideas para Reutilizar y Reciclar",
+        "content": "<p>Te mostramos proyectos DIY para darles una segunda vida a objetos cotidianos y reducir la basura que generamos.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T18:30:00Z",
+        "image": "posts_images/reutilizar.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 9,
+      "fields": {
+        "title": "Iniciativas de Transporte Limpio",
+        "content": "<p>Comparte experiencias sobre bicicletas públicas, autos eléctricos y redes de car-sharing en tu ciudad.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T19:00:00Z",
+        "image": "posts_images/transporte_limpio.jpg"
+      }
+    },
+    {
+      "model": "blog.post",
+      "pk": 10,
+      "fields": {
+        "title": "¿Qué es la Huella Hídrica?",
+        "content": "<p>La huella hídrica mide el agua utilizada en producir bienes y servicios. Aprende cómo reducirla en tu día a día.</p>",
+        "author": 1,
+        "created_at": "2025-03-07T20:15:00Z",
+        "image": "posts_images/huella_hidrica.jpg"
+      }
+    }
+  ]
+  

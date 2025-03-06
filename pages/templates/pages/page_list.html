@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Listado de Páginas - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<!-- Estilos inline para la paginación (disposición en línea) -->
+<style>
+  .pagination-inline {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .pagination-inline .page-link {
+    display: inline-block;
+    background-color: #ffffff;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  .pagination-inline .page-link.active {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+  }
+  .pagination-inline .page-link:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+    border-color: #0056b3;
+  }
+  .pagination-inline .page-link.disabled {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+  }
+</style>
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="mb-4">Listado de Páginas</h2>
+    <!-- Formulario de búsqueda -->
+    <form method="get" action="{% url 'pages:page_list' %}" class="mb-4">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Buscar en páginas..." value="{{ request.GET.q }}">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </div>
+    </form>
+    {% if pages %}
+    <div class="row">
+      {% for page in pages %}
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          {% if page.image %}
+          <img src="{{ page.image.url }}" class="card-img-top" alt="{{ page.title }}">
+          {% else %}
+          <img src="{% static 'images/default_page.jpg' %}" class="card-img-top" alt="Imagen por defecto">
+          {% endif %}
+          <div class="card-body">
+            <h4 class="card-title">{{ page.title }}</h4>
+            <p class="card-text">{{ page.subtitle|default:"Sin subtítulo" }}</p>
+            <a href="{% url 'pages:page_detail' page.pk %}" class="btn btn-primary">Leer más</a>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Creado el {{ page.created_at|date:"d/m/Y" }}</small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Paginación -->
+    {% if is_paginated %}
+    <nav aria-label="Paginación">
+      <div class="pagination-inline">
+        {% if page_obj.has_previous %}
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" aria-label="Anterior">&laquo;</a>
+        {% else %}
+        <span class="page-link disabled" aria-label="Anterior">&laquo;</span>
+        {% endif %}
+        {% for num in paginator.page_range %}
+          {% if page_obj.number == num %}
+          <span class="page-link active">{{ num }} <span class="visually-hidden">(actual)</span></span>
+          {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+          <a class="page-link" href="?page={{ num }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" aria-label="Siguiente">&raquo;</a>
+        {% else %}
+        <span class="page-link disabled" aria-label="Siguiente">&raquo;</span>
+        {% endif %}
+      </div>
+    </nav>
+    {% endif %}
+    {% else %}
+    <div class="alert alert-info">
+      No se encontraron páginas.
+    </div>
+    {% endif %}
+  </div>
+</section>
+<section class="py-5 bg-secondary text-white">
+  <!-- Sección opcional para contenido adicional o separador -->
+</section>
+{% endblock %}
