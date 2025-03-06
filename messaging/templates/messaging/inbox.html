@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Bandeja de Entrada - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>Bandeja de Entrada</h2>
+        {% if messages %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>De</th>
+                    <th>Asunto</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for msg in messages %}
+                <tr>
+                    <td>{{ msg.from_user.username }}</td>
+                    <td><a href="{% url 'messaging:message_detail' msg.pk %}">{{ msg.subject }}</a></td>
+                    <td>{{ msg.created_at|date:"d/m/Y H:i" }}</td>
+                    <td>
+                        {% if not msg.is_read %}
+                        <span class="badge bg-danger">Nuevo</span>
+                        {% else %}
+                        <span class="badge bg-secondary">Leído</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-info">
+            No tienes mensajes en tu bandeja de entrada.
+        </div>
+        {% endif %}
+        <div class="mt-4">
+            <a href="{% url 'messaging:message_create' %}" class="btn btn-primary">Enviar Mensaje</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

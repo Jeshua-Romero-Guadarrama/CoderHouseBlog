@@ -1,0 +1,80 @@
+sostenibilidad_blog/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── manage.py
+├── media/
+├── static/
+├── templates/
+│   ├── base.html
+│   ├── navbar.html
+│   └── footer.html
+├── sostenibilidad_blog/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── wsgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── local_settings.py
+├── blog/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── forms.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── pages/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations/
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│   └── templates/
+│       └── pages/
+│           ├── pages_list.html
+│           ├── page_detail.html
+│           ├── page_form.html
+│           └── pages_empty.html
+├── accounts/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations/
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│   └── templates/
+│       └── accounts/
+│           ├── login.html
+│           ├── register.html
+│           ├── profile.html
+│           ├── profile_update.html
+│           └── password_change.html
+├── messaging/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations/
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   ├── views.py
+│   └── templates/
+│       └── messaging/
+│           ├── inbox.html
+│           ├── message_detail.html
+│           └── message_form.html

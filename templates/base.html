@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>{% block title %}Sostenibilidad Blog{% endblock %}</title>
+
+  <!-- (Opcional) Bootstrap si deseas usarlo, pero sin que choque con tu main.css
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  -->
+
+  <!-- Tu CSS principal -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+  <!-- Metadatos -->
+  <meta name="description" content="Blog de sostenibilidad, noticias y consejos prácticos.">
+  <meta name="author" content="Jeshua">
+</head>
+<body>
+  
+  <!-- NAVBAR (usando tus propias clases de .navbar en main.css) -->
+  <nav class="navbar">
+    <div class="container flex-between">
+      <a class="navbar-brand" href="{% url 'home' %}">Sostenibilidad Blog</a>
+      <ul class="nav-list">
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="{% url 'about' %}">Acerca de mí</a></li>
+        <li><a href="{% url 'pages:list' %}">Páginas</a></li>
+        <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'accounts:profile' %}">Perfil</a></li>
+          <li><a href="{% url 'messaging:inbox' %}">Mensajes</a></li>
+          <li><a href="{% url 'accounts:logout' %}">Cerrar Sesión</a></li>
+        {% else %}
+          <li><a href="{% url 'accounts:login' %}">Iniciar Sesión</a></li>
+          <li><a href="{% url 'accounts:register' %}">Registrarse</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HEADER (usa la clase .header que definiste en main.css si existe) -->
+  <header class="header">
+    <div class="overlay"></div>
+    <div class="container">
+      <h1>¡Bienvenido a Sostenibilidad Blog!</h1>
+      <p class="lead">Tu fuente de inspiración para un mundo más sostenible.</p>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container" style="padding: 2rem 0;">
+    {% block content %}
+      <!-- Aquí se renderiza el contenido de cada vista -->
+    {% endblock %}
+  </main>
+
+  <!-- SIDEBAR (Opcional) -->
+  <aside class="container sidebar">
+    <h3>Acerca del Jeshua</h3>
+    <img src="{% static 'images/author.jpg' %}" alt="Foto del Jeshua" style="max-width:100%;" class="img-zoom">
+    <p>Conoce a la persona detrás de este blog, comprometida con el medio ambiente.</p>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Sostenibilidad Blog. Todos los derechos reservados.</p>
+      <p class="small">Diseñado por Jeshua. Creado con Django.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Si usas Bootstrap JS (opcional)
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  -->
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

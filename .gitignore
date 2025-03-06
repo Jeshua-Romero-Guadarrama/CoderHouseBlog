@@ -1,0 +1,27 @@
+# .gitignore
+
+# Archivos Python compilados/compilados en bytes
+__pycache__/
+*.py[cod]
+
+# Base de datos SQLite generada localmente
+db.sqlite3
+
+# Entorno virtual
+venv/
+
+# Archivos relacionados con configuraciones locales
+*.local_settings.py
+
+# Archivos de logs
+*.log
+
+# Carpeta de archivos de medios
+media/
+
+# Evitar subir archivos de nodos
+node_modules/
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/

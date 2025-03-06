@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% if form.instance.pk %}Editar Publicación{% else %}Crear Publicación{% endif %} - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>{% if form.instance.pk %}Editar Publicación{% else %}Crear Publicación{% endif %}</h2>
+        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.title.label_tag }}
+                {{ form.title }}
+                <div class="invalid-feedback">Ingrese un título.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.content.label_tag }}
+                {{ form.content }}
+                <div class="invalid-feedback">Ingrese el contenido.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.image.label_tag }}
+                {{ form.image }}
+                <div class="invalid-feedback">Seleccione una imagen.</div>
+            </div>
+            <button type="submit" class="btn btn-success">Guardar Publicación</button>
+            <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</section>
+{% endblock %}

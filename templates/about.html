@@ -1,0 +1,33 @@
+<!-- templates/about.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Acerca de mí - Sostenibilidad Blog{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <h2>Acerca de Mí</h2>
+    <!-- Usando una clase .flex-between u otra cosa si quieres un layout en 2 columnas -->
+    <div class="flex-between" style="gap: 2rem;">
+      <div style="flex: 1;">
+        <img src="{% static 'images/author.jpg' %}" alt="Foto de Jeshua" class="img-zoom" style="max-width:100%;">
+      </div>
+      <div style="flex: 2;">
+        <h3>Mi Historia</h3>
+        <p>Hola, soy Jeshua, apasionado por el medio ambiente y la sostenibilidad.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in libero vel turpis pellentesque egestas.</p>
+        <h4>Experiencia</h4>
+        <ul>
+          <li>Proyecto A: Logros y aprendizajes</li>
+          <li>Proyecto B: Trabajo relevante en sostenibilidad</li>
+          <li>Proyecto C: Colaboraciones e hitos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light" style="padding: 2rem 0;">
+</section>
+{% endblock %}

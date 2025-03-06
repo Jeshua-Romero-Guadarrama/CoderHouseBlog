@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Listado de Publicaciones - Sostenibilidad Blog{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>Listado de Publicaciones</h2>
+        {% if posts %}
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% else %}
+                    <img src="{% static 'images/default_post.jpg' %}" class="card-img-top" alt="Imagen por defecto">
+                    {% endif %}
+                    <div class="card-body">
+                        <h4 class="card-title">{{ post.title }}</h4>
+                        <p class="card-text">{{ post.content|safe|truncatewords:25 }}</p>
+                        <a href="{% url 'blog:post_detail' post.pk %}" class="btn btn-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            No hay publicaciones disponibles.
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

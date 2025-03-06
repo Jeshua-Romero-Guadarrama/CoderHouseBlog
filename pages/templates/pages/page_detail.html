@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detalle de la Página - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>{{ page.title }}</h2>
+        <h4>{{ page.subtitle }}</h4>
+        <p><strong>Fecha de Creación:</strong> {{ page.created_at }}</p>
+        {% if page.image %}
+        <img src="{{ page.image.url }}" alt="{{ page.title }}" class="img-fluid mb-4">
+        {% endif %}
+        <div class="content">
+            {{ page.content|safe }}
+        </div>
+        <div class="mt-4">
+            {% if user.is_authenticated %}
+            <a href="{% url 'pages:update' page.pk %}" class="btn btn-warning">Editar Página</a>
+            <a href="{% url 'pages:delete' page.pk %}" class="btn btn-danger">Eliminar Página</a>
+            {% endif %}
+            <a href="{% url 'pages:list' %}" class="btn btn-secondary">Volver al Listado</a>
+        </div>
+        <div class="mt-5">
+            <h3>Comentarios y Opiniones</h3>
+            {% for i in "1234567890"|make_list %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Usuario {{ forloop.counter }}</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.</p>
+                </div>
+            </div>
+            {% endfor %}
+            <p>Gracias por leer. Esperamos tus comentarios y sugerencias.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

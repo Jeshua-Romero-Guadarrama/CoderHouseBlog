@@ -1,0 +1,43 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Sostenibilidad Blog{% endblock %}
+
+
+{% block content %}
+<section class="mb-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Últimas Publicaciones</h2>
+    <div class="row">
+      {% for page in pages %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          {% if page.image %}
+            <img src="{{ page.image.url }}" class="card-img-top" alt="{{ page.title }}">
+          {% else %}
+            <img src="{% static 'images/default_page.jpg' %}" class="card-img-top" alt="Imagen por defecto">
+          {% endif %}
+          <div class="card-body">
+            <h4 class="card-title">{{ page.title }}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{ page.subtitle }}</h6>
+            <p class="card-text">{{ page.content|safe|truncatewords:25 }}</p>
+            <a href="{% url 'pages:detail' page.pk %}" class="btn btn-primary">Leer más</a>
+          </div>
+          <div class="card-footer text-muted">
+            Publicado el {{ page.created_at|date:"d/m/Y" }}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12">
+        <div class="alert alert-info text-center">
+          No hay publicaciones recientes.
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+

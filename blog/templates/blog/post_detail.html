@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detalle de la Publicación - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>{{ post.title }}</h2>
+        <p><strong>Autor:</strong> {{ post.author.username }}</p>
+        <p><strong>Fecha de Creación:</strong> {{ post.created_at|date:"d/m/Y" }}</p>
+        {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid mb-4">
+        {% endif %}
+        <div class="content">
+            {{ post.content|safe }}
+        </div>
+        <div class="mt-4">
+            {% if user.is_authenticated and post.author == user %}
+            <a href="{% url 'blog:post_update' post.pk %}" class="btn btn-warning">Editar Publicación</a>
+            <a href="{% url 'blog:post_delete' post.pk %}" class="btn btn-danger">Eliminar Publicación</a>
+            {% endif %}
+            <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">Volver al Listado</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

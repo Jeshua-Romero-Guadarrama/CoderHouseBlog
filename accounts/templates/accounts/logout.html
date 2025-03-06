@@ -1,0 +1,8 @@
+{% if user.is_authenticated %}
+    <li><a href="{% url 'accounts:profile' %}">Perfil</a></li>
+    <li><a href="{% url 'messaging:inbox' %}">Mensajes</a></li>
+    <li><a href="{% url 'accounts:logout' %}">Cerrar Sesión</a></li>
+{% else %}
+    <li><a href="{% url 'accounts:login' %}">Iniciar Sesión</a></li>
+    <li><a href="{% url 'accounts:register' %}">Registrarse</a></li>
+{% endif %}

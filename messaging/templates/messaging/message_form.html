@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Enviar Mensaje - Sostenibilidad Blog{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2>Enviar un Mensaje</h2>
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.to_user.label_tag }}
+                {{ form.to_user }}
+                <div class="invalid-feedback">Seleccione un destinatario.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.subject.label_tag }}
+                {{ form.subject }}
+                <div class="invalid-feedback">Ingrese un asunto.</div>
+            </div>
+            <div class="mb-3">
+                {{ form.body.label_tag }}
+                {{ form.body }}
+                <div class="invalid-feedback">Ingrese el contenido del mensaje.</div>
+            </div>
+            <button type="submit" class="btn btn-success">Enviar Mensaje</button>
+            <a href="{% url 'messaging:inbox' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</section>
+{% endblock %}
