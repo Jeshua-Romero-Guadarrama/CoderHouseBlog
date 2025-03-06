@@ -1,30 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}{% if form.instance.pk %}Editar Publicación{% else %}Crear Publicación{% endif %} - Sostenibilidad Blog{% endblock %}
+
+{% block title %}{{ post.title }} - Sostenibilidad Blog{% endblock %}
+
 {% block content %}
 <section class="py-5">
-    <div class="container">
-        <h2>{% if form.instance.pk %}Editar Publicación{% else %}Crear Publicación{% endif %}</h2>
-        <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
-            {% csrf_token %}
-            <div class="mb-3">
-                {{ form.title.label_tag }}
-                {{ form.title }}
-                <div class="invalid-feedback">Ingrese un título.</div>
-            </div>
-            <div class="mb-3">
-                {{ form.content.label_tag }}
-                {{ form.content }}
-                <div class="invalid-feedback">Ingrese el contenido.</div>
-            </div>
-            <div class="mb-3">
-                {{ form.image.label_tag }}
-                {{ form.image }}
-                <div class="invalid-feedback">Seleccione una imagen.</div>
-            </div>
-            <button type="submit" class="btn btn-success">Guardar Publicación</button>
-            <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">Cancelar</a>
-        </form>
-    </div>
+  <div class="container">
+    <article>
+      <h2>{{ post.title }}</h2>
+      <p class="text-muted">Publicado el {{ post.created_at|date:"d/m/Y" }}</p>
+      {% if post.image %}
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid mb-4">
+      {% endif %}
+      <div class="post-content">
+        {{ post.content|safe }}
+      </div>
+      <div class="mt-4">
+        <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">Volver al listado</a>
+        {% if user.is_authenticated and post.author == user %}
+          <a href="{% url 'blog:post_update' post.pk %}" class="btn btn-warning">Editar Publicación</a>
+          <a href="{% url 'blog:post_delete' post.pk %}" class="btn btn-danger">Eliminar Publicación</a>
+        {% endif %}
+      </div>
+    </article>
+  </div>
 </section>
 {% endblock %}

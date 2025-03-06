@@ -1,25 +1,48 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Detalle de la Publicación - Sostenibilidad Blog{% endblock %}
+{% block title %}{{ post.title }} - Sostenibilidad Blog{% endblock %}
 {% block content %}
 <section class="py-5">
-    <div class="container">
-        <h2>{{ post.title }}</h2>
-        <p><strong>Autor:</strong> {{ post.author.username }}</p>
-        <p><strong>Fecha de Creación:</strong> {{ post.created_at|date:"d/m/Y" }}</p>
-        {% if post.image %}
-        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid mb-4">
-        {% endif %}
-        <div class="content">
-            {{ post.content|safe }}
-        </div>
-        <div class="mt-4">
-            {% if user.is_authenticated and post.author == user %}
-            <a href="{% url 'blog:post_update' post.pk %}" class="btn btn-warning">Editar Publicación</a>
-            <a href="{% url 'blog:post_delete' post.pk %}" class="btn btn-danger">Eliminar Publicación</a>
-            {% endif %}
-            <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">Volver al Listado</a>
-        </div>
+  <div class="container">
+    <h2>{{ post.title }}</h2>
+    {% if post.subtitle %}
+      <h4>{{ post.subtitle }}</h4>
+    {% endif %}
+    <p><strong>Publicado el:</strong> {{ post.created_at|date:"d/m/Y" }}</p>
+    {% if post.image %}
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid mb-4">
+    {% endif %}
+    <div class="content">
+      {{ post.content|safe }}
     </div>
+    <div class="mt-4">
+      <a href="{% url 'blog:post_list' %}" class="btn btn-secondary">Volver al listado</a>
+      {% if user.is_authenticated and post.author == user %}
+        <a href="{% url 'blog:post_update' post.pk %}" class="btn btn-warning">Editar Publicación</a>
+        <a href="{% url 'blog:post_delete' post.pk %}" class="btn btn-danger">Eliminar Publicación</a>
+      {% endif %}
+    </div>
+    <div class="mt-5">
+      <h3>Comentarios y Opiniones</h3>
+      {% comment %}
+        Si tienes un modelo de comentarios relacionado con Post, puedes iterar sobre él, por ejemplo:
+        {% for comment in post.comments.all %}
+          ...
+        {% empty %}
+          <p>No hay comentarios aún. Sé el primero en opinar.</p>
+        {% endfor %}
+      {% endcomment %}
+      {# Ejemplo de comentarios ficticios similar a post_detail: #}
+      {% for i in "1234567890"|make_list %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Usuario {{ forloop.counter }}</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.</p>
+        </div>
+      </div>
+      {% endfor %}
+      <p>Gracias por leer. Esperamos tus comentarios y sugerencias.</p>
+    </div>
+  </div>
 </section>
 {% endblock %}

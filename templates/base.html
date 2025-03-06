@@ -23,14 +23,13 @@
 </head>
 <body>
   
-  <!-- NAVBAR (usando tus propias clases de .navbar en main.css) -->
   <nav class="navbar">
     <div class="container flex-between">
       <a class="navbar-brand" href="{% url 'home' %}">Sostenibilidad Blog</a>
       <ul class="nav-list">
         <li><a href="{% url 'home' %}">Inicio</a></li>
         <li><a href="{% url 'about' %}">Acerca de mí</a></li>
-        <li><a href="{% url 'pages:list' %}">Páginas</a></li>
+        <li><a href="{% url 'pages:page_list' %}">Páginas</a></li>
         <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'accounts:profile' %}">Perfil</a></li>
@@ -43,6 +42,7 @@
       </ul>
     </div>
   </nav>
+  
 
   <!-- HEADER (usa la clase .header que definiste en main.css si existe) -->
   <header class="header">

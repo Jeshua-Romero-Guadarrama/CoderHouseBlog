@@ -7,11 +7,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 from .forms import PostForm
+from django.db.models import Q
 
 
 """
-Vistas para la aplicación 'blog'. 
-Ejemplo con vistas basadas en clases (Class-Based Views) de Django.
+Vistas para la aplicación 'blog'.
 """
 
 class PostListView(ListView):
@@ -21,8 +21,8 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
-    paginate_by = 5  # Paginación: 5 elementos por página
-
+    ordering = ['-created_at']
+    paginate_by = 5
 
 class PostDetailView(DetailView):
     """
@@ -73,7 +73,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     """
-    Permite eliminar una publicación. Requiere login.
+    Permite eliminar una publicación existente. Requiere autenticación.
     """
     model = Post
     template_name = 'blog/post_confirm_delete.html'
@@ -93,4 +93,25 @@ class HomeView(ListView):
     template_name = 'home.html'
     context_object_name = 'posts'
     ordering = ['-created_at']
-    paginate_by = 5  
+    paginate_by = 5
+
+class InitialPostsView(ListView):
+    model = Post
+    template_name = 'post/initial_post.html'
+    context_object_name = 'post'
+    ordering = ['-created_at']
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/post_list.html'
+    context_object_name = 'posts'
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get('q')
+        if query:
+            queryset = queryset.filter(
+                Q(title__icontains=query) | Q(content__icontains=query)
+            )
+        return queryset

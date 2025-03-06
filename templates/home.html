@@ -22,7 +22,7 @@
             <h4 class="card-title">{{ page.title }}</h4>
             <h6 class="card-subtitle mb-2 text-muted">{{ page.subtitle }}</h6>
             <p class="card-text">{{ page.content|safe|truncatewords:25 }}</p>
-            <a href="{% url 'pages:detail' page.pk %}" class="btn btn-primary">Leer más</a>
+            <a href="{% url 'pages:page_detail' page.pk %}" class="btn btn-primary">Leer más</a>
           </div>
           <div class="card-footer text-muted">
             Publicado el {{ page.created_at|date:"d/m/Y" }}

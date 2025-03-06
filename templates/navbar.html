@@ -3,7 +3,7 @@
     <ul>
         <li><a href="{% url 'home' %}">Inicio</a></li>
         <li><a href="{% url 'about' %}">Acerca de mí</a></li>
-        <li><a href="{% url 'pages:list' %}">Páginas</a></li>
+        <li><a href="{% url 'pages:page_list' %}">Páginas</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'accounts:profile' %}">Perfil</a></li>
             <li><a href="{% url 'messaging:inbox' %}">Mensajes</a></li>

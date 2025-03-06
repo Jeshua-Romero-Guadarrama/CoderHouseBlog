@@ -6,10 +6,11 @@ from .views import (
     PostDetailView,
     PostCreateView,
     PostUpdateView,
-    PostDeleteView
+    PostDeleteView,
+    InitialPostsView
 )
 
-app_name = 'blog'  # Para referenciar rutas usando 'blog:nombre_de_la_ruta'
+app_name = 'blog'  
 
 """
 En este archivo se definen las rutas (URLs) de la aplicación 'blog'.
@@ -22,4 +23,5 @@ urlpatterns = [
     path('nuevo/', PostCreateView.as_view(), name='post_create'),
     path('editar/<int:pk>/', PostUpdateView.as_view(), name='post_update'),
     path('eliminar/<int:pk>/', PostDeleteView.as_view(), name='post_delete'),
+    path('', InitialPostsView.as_view(), name='home'),
 ]

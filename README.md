@@ -16,33 +16,40 @@ mensajería interna (`messaging`) y cualquier otra funcionalidad adicional que s
    ```bash
    git clone https://github.com/tu-usuario/sostenibilidad_blog.git
    ```
+
 2. **Crear y activar un entorno virtual** (opcional pero recomendado):
    ```bash
    python -m venv venv
    source venv/bin/activate  # En Linux/Mac
    venv\Scripts\activate     # En Windows
    ```
+
 3. **Instalar dependencias**:
    ```bash
    pip install -r requirements.txt
    ```
+
 4. **Realizar las migraciones** para configurar la base de datos:
    ```bash
    python manage.py migrate
    ```
-5. **Cargar los fixtures** con los datos iniciales:
+
+5. **Crear un superusuario** (opcional, si deseas acceder al admin):
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+6. **Cargar los fixtures** con los datos iniciales:
    ```bash
    python manage.py loaddata initial_pages_utf8.json
    python manage.py loaddata initial_posts_utf8.json
    ```
-6. **Crear un superusuario** (opcional, si deseas acceder al admin):
-   ```bash
-   python manage.py createsuperuser
-   ```
+
 7. **Iniciar el servidor de desarrollo**:
    ```bash
    python manage.py runserver
    ```
+
 8. **Abrir el proyecto** en tu navegador:
    ```
    http://127.0.0.1:8000/
